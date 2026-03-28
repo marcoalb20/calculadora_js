@@ -608,4 +608,17 @@ function validarTelefono(numero) {
   return /^9\d{8}$/.test(numero);
 }
 
+function cargarGlobales() {
+  fetch(GOOGLE_SHEET_URL)
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data && typeof data.registros !== "undefined") {
+        $("#g_registros").text(data.registros);
+      }
+    })
+    .catch(function(err) {
+      console.warn("No se pudo cargar el contador:", err);
+    });
+}
+
 init();
