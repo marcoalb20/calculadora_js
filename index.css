@@ -332,19 +332,27 @@ select.input-estilo {
 }
 
 .separador {
-  height: 20px;
+  height: 50px;
   background-color: var(--background-color);
 }
 
 #resultadoBloque {
-  /* display: none; */
-  margin-top: 26px;
+  display: none;
+  /* margin-top: 26px; */
   position: relative;
   z-index: 3;
   overflow: hidden;
   border-radius: 0;
+  margin: 0;
 }
 
+#accionesFinales {
+  display: none;
+}
+
+#separador {
+  display: none;
+}
 .bloque-ambiental {
   background: linear-gradient(180deg, #8cc46c 0%, #7ab45c 100%);
   padding: 26px 28px 36px 28px;
@@ -352,7 +360,10 @@ select.input-estilo {
 }
 
 .bloque-social {
-  background: linear-gradient(180deg, #efb243 0%, #eba534 100%);
+  /* margin: 0; */
+  /* background: linear-gradient(180deg, #efb243 0%, #eba534 100%);
+   */
+  background-color: #efb243;
   padding: 26px 28px 36px 28px;
   position: relative;
 }
@@ -468,12 +479,13 @@ select.input-estilo {
 }
 
 .acciones-finales {
+  background-color: #efb243;
   text-align: center;
-  margin-top: 28px;
+  padding-bottom: 28px;
 }
 
 .acciones-finales .btn {
-  margin: 4px 14px;
+  margin-right: 15px;
   min-width: 180px;
   border: none;
   border-radius: 8px;
@@ -651,8 +663,12 @@ select.input-estilo {
 }
 
 /* Desktop: muestra vertical, oculta horizontal */
-#path-mobile  { display: none; }
-#path-desktop { display: block; }
+#path-mobile {
+  display: none;
+}
+#path-desktop {
+  display: block;
+}
 
 @media (max-width: 991px) {
   .panel-principal {
@@ -674,8 +690,12 @@ select.input-estilo {
   }
 
   /* Cambia qué path se muestra */
-  #path-desktop { display: none; }
-  #path-mobile  { display: block; }
+  #path-desktop {
+    display: none;
+  }
+  #path-mobile {
+    display: block;
+  }
 
   .contenido-superior {
     display: block;
@@ -844,11 +864,17 @@ select.input-estilo {
     min-height: auto;
   }
 
+  .acciones-finales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .acciones-finales .btn {
-    display: block;
     width: 100%;
     max-width: 280px;
-    margin: 10px auto 0 auto;
+    margin: 10px 10px 0 auto;
     font-size: 24px;
   }
 

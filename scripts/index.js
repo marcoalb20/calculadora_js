@@ -1,4 +1,5 @@
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxwMPwFiwRYYOj4_krH4xrWq3S1mGiYtlTecR5zYzJX2X21kWR8yn_SLpAmX-7ieizkUQ/exec";
+const GOOGLE_SHEET_URL =
+  "https://script.google.com/macros/s/AKfycbxwMPwFiwRYYOj4_krH4xrWq3S1mGiYtlTecR5zYzJX2X21kWR8yn_SLpAmX-7ieizkUQ/exec";
 async function guardarEnGoogleSheets(data) {
   try {
     const params = new URLSearchParams();
@@ -6,7 +7,10 @@ async function guardarEnGoogleSheets(data) {
     params.append("email", data.email);
     params.append("numero", data.numero);
     params.append("acepta", data.acepta ? "Sí" : "No");
-    params.append("residuos", data.residuos.map(r => r.material + ": " + r.kilos + "kg").join(" | "));
+    params.append(
+      "residuos",
+      data.residuos.map((r) => r.material + ": " + r.kilos + "kg").join(" | "),
+    );
     params.append("valor", data.valor);
     params.append("terapias", data.terapias);
     params.append("mascaras", data.mascaras);
@@ -291,23 +295,23 @@ async function guardarLeadYMostrarResultado() {
   }
 
   let r = calcularImpactoMultiple(lista);
-// Guardar en Google Sheets
-await guardarEnGoogleSheets({
-  nombre: nombre,
-  email: email,
-  numero: numero,
-  acepta: $("#acepta").is(":checked"),
-  residuos: lista,
-  valor: r.valor,
-  terapias: r.terapias,
-  mascaras: r.mascaras,
-  cremas: r.cremas,
-  arboles: r.arboles,
-  energia: r.energia,
-  aceite: r.aceite,
-  espacio: r.espacio,
-  agua: r.agua
-});
+  // Guardar en Google Sheets
+  await guardarEnGoogleSheets({
+    nombre: nombre,
+    email: email,
+    numero: numero,
+    acepta: $("#acepta").is(":checked"),
+    residuos: lista,
+    valor: r.valor,
+    terapias: r.terapias,
+    mascaras: r.mascaras,
+    cremas: r.cremas,
+    arboles: r.arboles,
+    energia: r.energia,
+    aceite: r.aceite,
+    espacio: r.espacio,
+    agua: r.agua,
+  });
 
   // Mostrar primero el resultado para poder capturarlo bien
   mostrarResultados(r);
@@ -354,63 +358,8 @@ await guardarEnGoogleSheets({
     imagen: urlImagen,
   });
 
-  //
   return limpiarTodo();
-  // cargarGlobales();
-  //
-
-  // return $.ajax({
-  //   url: "../ajax/calculadora.php?op=guardar",
-  //   type: "POST",
-  //   data: formData,
-  //   contentType: false,
-  //   processData: false,
-  //   success: function (resp) {
-  //     resp = $.trim(resp);
-
-  //     if (resp === "ok") {
-  //       $("#modalLead").modal("hide");
-  //       cargarGlobales();
-  //       limpiarTodo();
-  //     } else if (resp === "error_datos") {
-  //       bootbox.alert("Faltan datos del formulario.");
-  //     } else if (resp === "error_email") {
-  //       bootbox.alert("El correo no tiene un formato válido.");
-  //     } else if (resp === "error_residuos") {
-  //       bootbox.alert("Los residuos enviados no son válidos.");
-  //     } else if (resp === "error_material") {
-  //       bootbox.alert("Se detectó un material no permitido.");
-  //     } else if (resp === "error_kilos") {
-  //       bootbox.alert("Cada residuo debe tener como mínimo 50 kg.");
-  //     } else {
-  //       bootbox.alert("No se pudo guardar la información.");
-  //       console.log("RESPUESTA:", resp);
-  //       console.log(resp);
-  //     }
-  //   },
-  //   error: function (xhr) {
-  //     console.log(xhr.responseText);
-  //     bootbox.alert("Error en la petición AJAX.");
-  //   },
-  // });
 }
-
-// async function subirImagenCloudinary(file) {
-//   const url = `https://api.cloudinary.com/v1_1/dytaazqjb/image/upload`;
-//   const formData = new FormData();
-//   formData.append("file", file); // Blob o File
-//   formData.append("upload_preset", "ml_default");
-
-//   const res = await fetch(url, {
-//     method: "POST",
-//     body: formData,
-//   });
-
-//   if (!res.ok) throw new Error("Error subiendo a Cloudinary");
-
-//   const data = await res.json();
-//   return data.secure_url; // <-- esta es la URL que puedes usar en tu EmailJS
-// }
 
 async function subirImagenACloudinary(imagenBase64) {
   const formData = new FormData();
@@ -446,6 +395,8 @@ function mostrarResultados(r) {
   $("#r_cremas").text(r.cremas);
 
   $("#resultadoBloque").show();
+  $("#accionesFinales").show();
+  $("#separador").show();
 
   $("html, body").animate(
     {
@@ -493,21 +444,6 @@ async function enviarCorreoEmailJS(data) {
     console.error("Error enviando correo:", err);
   }
 }
-
-// Ejemplo de uso
-// let imagenBase64 = await capturarResultadoComoBase64();
-// enviarCorreoSoloImagen(imagenBase64);
-
-// function cargarGlobales() {
-//   $.get("../ajax/calculadora.php?op=globales", function (resp) {
-//     try {
-//       let data = JSON.parse(resp);
-//       $("#g_registros").text(data.registros || 0);
-//     } catch (e) {
-//       console.log(resp);
-//     }
-//   });
-// }
 
 function limpiarTodo() {
   $("#formLead")[0].reset();
@@ -671,6 +607,5 @@ telefonoInput.addEventListener("input", function (e) {
 function validarTelefono(numero) {
   return /^9\d{8}$/.test(numero);
 }
-
 
 init();
