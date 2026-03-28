@@ -1,3 +1,33 @@
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxwMPwFiwRYYOj4_krH4xrWq3S1mGiYtlTecR5zYzJX2X21kWR8yn_SLpAmX-7ieizkUQ/exec";
+async function guardarEnGoogleSheets(data) {
+  try {
+    const params = new URLSearchParams();
+    params.append("nombre", data.nombre);
+    params.append("email", data.email);
+    params.append("numero", data.numero);
+    params.append("acepta", data.acepta ? "Sí" : "No");
+    params.append("residuos", data.residuos.map(r => r.material + ": " + r.kilos + "kg").join(" | "));
+    params.append("valor", data.valor);
+    params.append("terapias", data.terapias);
+    params.append("mascaras", data.mascaras);
+    params.append("cremas", data.cremas);
+    params.append("arboles", data.arboles);
+    params.append("energia", data.energia);
+    params.append("aceite", data.aceite);
+    params.append("espacio", data.espacio);
+    params.append("agua", data.agua);
+
+    await fetch(GOOGLE_SHEET_URL + "?" + params.toString(), {
+      method: "GET",
+      mode: "no-cors",
+    });
+
+    console.log("Datos guardados en Google Sheets ✓");
+  } catch (err) {
+    console.error("Error guardando en Sheets:", err);
+  }
+}
+
 function init() {
   $(document).on("click", ".btn-agregar-fila-circle", function () {
     agregarFilaResiduo();
@@ -261,6 +291,23 @@ async function guardarLeadYMostrarResultado() {
   }
 
   let r = calcularImpactoMultiple(lista);
+// Guardar en Google Sheets
+await guardarEnGoogleSheets({
+  nombre: nombre,
+  email: email,
+  numero: numero,
+  acepta: $("#acepta").is(":checked"),
+  residuos: lista,
+  valor: r.valor,
+  terapias: r.terapias,
+  mascaras: r.mascaras,
+  cremas: r.cremas,
+  arboles: r.arboles,
+  energia: r.energia,
+  aceite: r.aceite,
+  espacio: r.espacio,
+  agua: r.agua
+});
 
   // Mostrar primero el resultado para poder capturarlo bien
   mostrarResultados(r);
@@ -624,5 +671,6 @@ telefonoInput.addEventListener("input", function (e) {
 function validarTelefono(numero) {
   return /^9\d{8}$/.test(numero);
 }
+
 
 init();

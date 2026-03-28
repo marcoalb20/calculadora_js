@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <title>Calculadora Doble Impacto</title>
@@ -25,15 +24,25 @@
 
     <div class="lienzo">
         <div class="panel-principal">
-            <svg class="forma-naranja" viewBox="0 0 260 480" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none">
-                <path d="M0,0 L200,0
+            <svg class="forma-naranja" id="svgFormaNaranja"
+     viewBox="0 0 260 480" 
+     xmlns="http://www.w3.org/2000/svg"
+     preserveAspectRatio="none">
+  <!-- Forma vertical (desktop) -->
+  <path id="path-desktop" d="M0,0 L200,0
     C240,0 260,30 255,80
     C250,130 220,150 230,210
     C240,270 265,290 260,340
     C255,390 230,430 195,460
-    C170,480 100,485 0,480 Z" fill="#ff7300" />
-            </svg>
+    C170,480 100,485 0,480 Z"
+    fill="#ff7300"/>
+  <!-- Forma horizontal (móvil/tablet) -->
+  <path id="path-mobile" d="M0,0 L260,0
+    L260,180
+    C220,200 180,260 130,240
+    C80,220 40,200 0,230 Z"
+    fill="#ff7300"/>
+</svg>
 
             <div class="contenido-superior">
                 <div class="col-izquierda">

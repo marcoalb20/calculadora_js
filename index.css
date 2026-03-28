@@ -650,30 +650,32 @@ select.input-estilo {
   }
 }
 
+/* Desktop: muestra vertical, oculta horizontal */
+#path-mobile  { display: none; }
+#path-desktop { display: block; }
+
 @media (max-width: 991px) {
   .panel-principal {
     min-height: auto;
   }
 
+  /* Banda horizontal arriba en móvil */
   .forma-naranja {
     position: absolute;
     left: 0;
     top: 0;
-    width: 25%;
-    height: 100%;
+    width: 100%;
+    height: 240px;
     z-index: 1;
   }
 
   .forma-naranja::after {
-    content: "";
-    position: absolute;
-    right: -70px;
-    bottom: -150px;
-    width: 220px;
-    height: 220px;
-    background: #ff7300;
-    border-radius: 50%;
+    display: none;
   }
+
+  /* Cambia qué path se muestra */
+  #path-desktop { display: none; }
+  #path-mobile  { display: block; }
 
   .contenido-superior {
     display: block;
