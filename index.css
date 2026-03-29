@@ -36,15 +36,15 @@ body {
   left: 0;
   top: 0;
   width: 25%;
-  height: 740px;
-  z-index: 1;
+  height: 100%;
+  z-index: 0;
 }
 
 .forma-naranja::after {
   content: "";
   position: absolute;
   right: -70px;
-  bottom: -150px;
+  bottom: -80px;
   width: 220px;
   height: 220px;
   background: #ff7300;
@@ -63,6 +63,7 @@ body {
   width: 34%;
   position: relative;
   display: flex;
+  z-index: 2;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 0;
@@ -555,15 +556,15 @@ select.input-estilo {
 
 .modal-lead-wrap {
   position: relative;
-  min-height: 470px;
+  min-height: 470;
   padding: 0 0 0 180px;
 }
 
 .modal-lead-nino {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 170px;
+  left: -50px;
+  bottom: -30px;
+  width: 320px;
   height: auto;
   z-index: 1;
 }
@@ -747,8 +748,9 @@ select.input-estilo {
   }
 
   .modal-lead-wrap {
+    position: relative;
     min-height: auto;
-    padding: 0;
+    padding: 0 ;
   }
 
   .modal-lead-nino {
@@ -759,7 +761,7 @@ select.input-estilo {
   }
 
   .titulo-modal-lead {
-    font-size: 42px;
+    font-size: 36px;
     margin: 6px 12px 18px 12px;
   }
 
@@ -888,7 +890,7 @@ select.input-estilo {
   }
 
   .titulo-modal-lead {
-    font-size: 34px;
+    padding: 0 10px;
   }
 
   .btn-calcular-modal {
