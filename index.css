@@ -1,5 +1,4 @@
 :root {
-  /* --background-color: #2aa79e; */
   --background-color: whitesmoke;
 }
 
@@ -9,7 +8,6 @@
 
 body {
   margin: 0;
-  /* background: #2aa79e; */
   background-color: var(--background-color);
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
@@ -22,11 +20,26 @@ body {
   position: relative;
 }
 
+.logo-superior {
+  width: 200px;
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  /* top: 0; */
+}
+
+.logo-superior .logo {
+  width: 100%;
+  height: auto;
+  /* display: block; */
+}
+
 .panel-principal {
   position: relative;
   min-height: 720px;
   background: #f1d3a3;
-  /* padding: 24px 18px; */
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 }
@@ -139,7 +152,6 @@ body {
   grid-template-columns: 1fr 1fr 54px;
   gap: 18px;
   align-items: center;
-  /* antes: end */
   margin-bottom: 14px;
 }
 
@@ -197,7 +209,6 @@ select.input-estilo {
   visibility: hidden;
   min-height: 17px;
   margin-top: 6px;
-  /* color:transparent; */
   font-size: 13px;
   font-weight: 500;
 }
@@ -339,7 +350,6 @@ select.input-estilo {
 
 #resultadoBloque {
   display: none;
-  /* margin-top: 26px; */
   position: relative;
   z-index: 3;
   overflow: hidden;
@@ -361,9 +371,6 @@ select.input-estilo {
 }
 
 .bloque-social {
-  /* margin: 0; */
-  /* background: linear-gradient(180deg, #efb243 0%, #eba534 100%);
-   */
   background-color: #efb243;
   padding: 26px 28px 36px 28px;
   position: relative;
@@ -423,11 +430,10 @@ select.input-estilo {
 }
 
 .banner-text-ani {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #111;
   text-align: center;
+  font-size: 2rem;
+  padding: 40px 0 0 0;
 }
 
 .icono-resultado {
@@ -750,7 +756,7 @@ select.input-estilo {
   .modal-lead-wrap {
     position: relative;
     min-height: auto;
-    padding: 0 ;
+    padding: 0;
   }
 
   .modal-lead-nino {

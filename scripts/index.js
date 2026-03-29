@@ -368,7 +368,7 @@ async function subirImagenACloudinary(imagenBase64) {
 
   try {
     const response = await fetch(
-      "https://api.cloudinary.com/v1_1/dytaazqjb/image/upload",
+      "https://api.cloudinary.com/v1_1/dt8cme8bu/image/upload",
       {
         method: "POST",
         body: formData,
@@ -384,34 +384,12 @@ async function subirImagenACloudinary(imagenBase64) {
   }
 }
 
-function mostrarResultados(r) {
-  $("#r_arboles").text(r.arboles);
-  $("#r_espacio").text(r.espacio);
-  $("#r_agua").text(r.agua);
-  $("#r_energia").text(r.energia);
-
-  $("#r_terapias").text(r.terapias);
-  $("#r_mascaras").text(r.mascaras);
-  $("#r_cremas").text(r.cremas);
-
-  $("#resultadoBloque").show();
-  $("#accionesFinales").show();
-  $("#separador").show();
-
-  $("html, body").animate(
-    {
-      scrollTop: $("#resultadoBloque").offset().top - 40,
-    },
-    500,
-  );
-}
-
 async function enviarCorreoEmailJS(data) {
   // Prepara los parámetros para EmailJS
   const payload = {
-    service_id: "service_aniquem", // reemplaza con tu Service ID
-    template_id: "template_gyw0pam", // reemplaza con tu Template ID
-    user_id: "upSGiI757sMSdgKjd", // reemplaza con tu Public Key
+    service_id: "service_aniquem_calc", // reemplaza con tu Service ID
+    template_id: "template_aniquem_calc", // reemplaza con tu Template ID
+    user_id: "ejMrFkaH7uXVp-YbN", // reemplaza con tu Public Key
     template_params: {
       nombre: data.nombre,
       numero: data.numero,
@@ -443,6 +421,28 @@ async function enviarCorreoEmailJS(data) {
   } catch (err) {
     console.error("Error enviando correo:", err);
   }
+}
+
+function mostrarResultados(r) {
+  $("#r_arboles").text(r.arboles);
+  $("#r_espacio").text(r.espacio);
+  $("#r_agua").text(r.agua);
+  $("#r_energia").text(r.energia);
+
+  $("#r_terapias").text(r.terapias);
+  $("#r_mascaras").text(r.mascaras);
+  $("#r_cremas").text(r.cremas);
+
+  $("#resultadoBloque").show();
+  $("#accionesFinales").show();
+  $("#separador").show();
+
+  $("html, body").animate(
+    {
+      scrollTop: $("#resultadoBloque").offset().top - 40,
+    },
+    500,
+  );
 }
 
 function limpiarTodo() {
@@ -581,7 +581,7 @@ async function capturarResultadoComoBase64() {
   document.body.appendChild(clone);
 
   const canvas = await html2canvas(clone, {
-    scale: 1.0,
+    scale: 2,
     useCORS: true,
     backgroundColor: "#ffffff",
     windowWidth: 1200,
@@ -591,7 +591,7 @@ async function capturarResultadoComoBase64() {
 
   document.body.removeChild(clone);
 
-  return canvas.toDataURL("image/png", 0.6);
+  return canvas.toDataURL("image/png");
 }
 
 const telefonoInput = document.getElementById("numero");
@@ -610,13 +610,15 @@ function validarTelefono(numero) {
 
 function cargarGlobales() {
   fetch(GOOGLE_SHEET_URL)
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
       if (data && typeof data.registros !== "undefined") {
         $("#g_registros").text(data.registros);
       }
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.warn("No se pudo cargar el contador:", err);
     });
 }
