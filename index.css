@@ -24,9 +24,9 @@ body {
   width: 300px;
   position: absolute;
   z-index: 100;
-  display: flex;
-  align-items: start;
-  justify-content: start;
+  top: 0;
+  left: 0;
+  height: auto;
   /* top: 0; */
 }
 
@@ -680,10 +680,13 @@ select.input-estilo {
 @media (max-width: 991px) {
 
   .logo-superior {
-    width: 160px;
-    position: relative; /* o static si quieres que fluya normal */
+    width: 180px;
+    position: absolute; /* o static si quieres que fluya normal */
+    top: -10px;
+    left: -10px;
     margin: 0;
-    padding: 10px 14px;
+    padding: 0;
+    z-index: 200;
   }
 
   .panel-principal {
@@ -796,7 +799,7 @@ select.input-estilo {
 
 @media (max-width: 767px) {
   .logo-superior {
-    width: 180px !important;
+    width: 200px !important;
     position: absolute !important;
     top: 0px !important;
     left: 0px !important;
@@ -805,7 +808,7 @@ select.input-estilo {
     z-index: 200 !important;
   }
 .logo-bloque-resultado {
-    width: 120px;
+    width: 80px;
     top: 0px;
     right: 0px;
   }
@@ -830,6 +833,7 @@ select.input-estilo {
 }
   .lienzo {
     padding: 0;
+    position: relative;
   }
 
   .panel-principal {
@@ -1052,9 +1056,5 @@ select.input-estilo {
     font-size: 33px;
   }
 
-  .logo-superior {
-    width: 160px !important;
-    top: 6px !important;
-    left: 6px !important;
-  }
+  
 }
