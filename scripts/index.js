@@ -88,7 +88,7 @@ function agregarFilaResiduo() {
           <option value="">Seleccione</option>
           <option value="papel">Papel</option>
           <option value="carton">Cartón</option>
-          <option value="pet">PET</option>
+          <option value="pet">Plástico PET</option>
           <option value="chatarra">Chatarra</option>
         </select>
         <small class="texto-ayuda-input">&nbsp;</small>
@@ -457,7 +457,7 @@ function limpiarTodo() {
           <option value="">Seleccione</option>
           <option value="papel">Papel</option>
           <option value="carton">Cartón</option>
-          <option value="pet">PET</option>
+          <option value="pet">Plástico PET</option>
           <option value="chatarra">Chatarra</option>
         </select>
         <small class="texto-ayuda-input">&nbsp;</small>
