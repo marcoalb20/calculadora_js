@@ -387,9 +387,9 @@ async function subirImagenACloudinary(imagenBase64) {
 async function enviarCorreoEmailJS(data) {
   // Prepara los parámetros para EmailJS
   const payload = {
-    service_id: "service_aniquem_calc", // reemplaza con tu Service ID
-    template_id: "template_aniquem_calc", // reemplaza con tu Template ID
-    user_id: "ejMrFkaH7uXVp-YbN", // reemplaza con tu Public Key
+    service_id: "service_Aniquem", // reemplaza con tu Service ID
+    template_id: "template_AniquemC", // reemplaza con tu Template ID
+    user_id: "DkrfVrjUpp_NSI63J", // reemplaza con tu Public Key
     template_params: {
       nombre: data.nombre,
       numero: data.numero,
